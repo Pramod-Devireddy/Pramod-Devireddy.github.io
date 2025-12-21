@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
-  modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/tailwindcss', '@vite-pwa/nuxt'],
 
   app: {
     head: {
@@ -27,6 +27,47 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
       ]
+    }
+  },
+
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'Pramod Devireddy - Portfolio',
+      short_name: 'Pramod D',
+      description: 'Scientist/Engineer @ ISRO || Spacecraft Mission Software Engineer || Full Stack Developer',
+      theme_color: '#4C8BF4',
+      background_color: '#ffffff',
+      display: 'standalone',
+      orientation: 'portrait',
+      icons: [
+        {
+          src: '/icon.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: '/icon.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+        {
+          src: '/icon.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable'
+        }
+      ]
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,jpg,svg,ico,woff2}']
+    },
+    client: {
+      installPrompt: true
+    },
+    devOptions: {
+      enabled: false
     }
   },
 
