@@ -1,94 +1,109 @@
 <template>
-  <v-app>
-    <v-app-bar app flat class="app-bar" :color="appBarColor" :height="mdAndUp ? 75 : 100" dark>
-      <v-row align="center" :no-gutters="!mdAndUp">
-        <v-col :cols="12" :md="6" :sm="6">
-          <h1 :class="mdAndUp ? 'text-left ml-10' : 'text-center mt-5'">
-            <NuxtLink to="/" class="hero" :style="{ color: appTitleColor }">
+  <div class="min-h-screen flex flex-col">
+    <!-- App Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 shadow-sm" :style="{ backgroundColor: appBarColor }"
+      :class="mdAndUp ? 'h-[75px]' : 'h-[100px]'">
+      <div class="flex items-center h-full px-4" :class="mdAndUp ? 'flex-row' : 'flex-col justify-center'">
+        <!-- Logo -->
+        <div :class="mdAndUp ? 'ml-10' : 'text-center mt-2'">
+          <h1>
+            <NuxtLink to="/" class="text-2xl font-light no-underline" :style="{ color: appTitleColor }">
               Pramod Devireddy
             </NuxtLink>
           </h1>
-        </v-col>
+        </div>
 
-        <v-col :cols="12" :md="6" :sm="6" :class="mdAndUp ? 'text-right pr-10 pt-3' : 'text-center mb-5'">
-          <v-btn :color="appTitleColor" class="nav-button" variant="text" rounded>
+        <div class="flex-1"></div>
+
+        <!-- Navigation -->
+        <nav :class="mdAndUp ? 'pr-10' : 'text-center mb-2'">
+          <NuxtLink class="nav-button px-5 py-2 mx-1 text-base font-light rounded-full transition-all cursor-pointer"
+            :style="{ color: appTitleColor }">
             Skills
-          </v-btn>
+          </NuxtLink>
 
-          <v-btn :color="appTitleColor" class="nav-button" variant="text" rounded>
+          <NuxtLink class="nav-button px-5 py-2 mx-1 text-base font-light rounded-full transition-all cursor-pointer"
+            :style="{ color: appTitleColor }">
             Projects
-          </v-btn>
+          </NuxtLink>
 
-          <v-btn :color="appTitleColor" :class="['nav-button', { 'v-btn--active': isBlogActive }]" variant="text"
-            rounded to="/blog">
+          <NuxtLink to="/blog"
+            class="nav-button px-5 py-2 mx-1 text-base font-light rounded-full transition-all cursor-pointer"
+            :class="{ 'nav-active': isBlogActive }" :style="{ color: appTitleColor }">
             Blog
-          </v-btn>
+          </NuxtLink>
 
-          <v-btn :color="appTitleColor" class="nav-button" variant="text" rounded>
+          <NuxtLink class="nav-button px-5 py-2 mx-1 text-base font-light rounded-full transition-all cursor-pointer"
+            :style="{ color: appTitleColor }">
             Contact
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-app-bar>
+          </NuxtLink>
+        </nav>
+      </div>
+    </header>
 
-    <v-main>
+    <!-- Main Content -->
+    <main :class="mdAndUp ? 'mt-[75px]' : 'mt-[100px]'" class="flex-1">
       <NuxtPage />
-    </v-main>
+    </main>
 
-    <v-footer app class="py-3 footer">
-      <v-row no-gutters>
-        <v-col :cols="4"></v-col>
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-3">
+      <div class="flex flex-wrap items-center">
+        <div class="w-full md:w-1/3"></div>
 
-        <v-col :cols="12" :md="4" class="text-center">
-          <span style="
-              font-size: 16px;
-              font-weight: 300;
-              letter-spacing: 1px;
-              line-height: 36px;
-            ">
+        <div class="w-full md:w-1/3 text-center">
+          <span class="text-base font-light tracking-wide leading-9">
             Copyright &copy; {{ new Date().getFullYear() }} Pramod Devireddy
           </span>
-        </v-col>
+        </div>
 
-        <v-col :cols="12" :md="4" :class="mdAndUp ? 'text-right' : 'text-center'">
-          <v-btn class="mx-1" icon variant="text" color="#DA5B50" target="_blank"
-            href="mailto:devireddy.pramod@gmail.com">
-            <v-icon>mdi-gmail</v-icon>
-          </v-btn>
+        <div class="w-full md:w-1/3" :class="mdAndUp ? 'text-right pr-4' : 'text-center'">
+          <a class="inline-flex items-center justify-center w-10 h-10 mx-1 text-[#DA5B50] hover:opacity-75"
+            target="_blank" href="mailto:devireddy.pramod@gmail.com">
+            <span class="mdi mdi-gmail text-2xl"></span>
+          </a>
 
-          <v-btn class="mx-1" icon variant="text" color="#0077BF" target="_blank"
-            href="https://www.linkedin.com/in/pramod-devireddy/">
-            <v-icon>mdi-linkedin</v-icon>
-          </v-btn>
+          <a class="inline-flex items-center justify-center w-10 h-10 mx-1 text-[#0077BF] hover:opacity-75"
+            target="_blank" href="https://www.linkedin.com/in/pramod-devireddy/">
+            <span class="mdi mdi-linkedin text-2xl"></span>
+          </a>
 
-          <v-btn class="mx-1" icon variant="text" color="black" target="_blank"
+          <a class="inline-flex items-center justify-center w-10 h-10 mx-1 text-black hover:opacity-75" target="_blank"
             href="https://github.com/Pramod-Devireddy">
-            <v-icon>mdi-github</v-icon>
-          </v-btn>
+            <span class="mdi mdi-github text-2xl"></span>
+          </a>
 
-          <v-btn class="mx-1" icon variant="text" color="#1A91DA" target="_blank"
-            href="https://twitter.com/PramodDevireddy">
-            <v-icon>mdi-twitter</v-icon>
-          </v-btn>
+          <a class="inline-flex items-center justify-center w-10 h-10 mx-1 text-[#1A91DA] hover:opacity-75"
+            target="_blank" href="https://twitter.com/PramodDevireddy">
+            <span class="mdi mdi-twitter text-2xl"></span>
+          </a>
 
-          <v-btn class="mx-1" icon variant="text" color="black" target="_blank" href="https://codepen.io/domarpdev">
-            <v-icon>mdi-codepen</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-footer>
-  </v-app>
+          <a class="inline-flex items-center justify-center w-10 h-10 mx-1 text-black hover:opacity-75" target="_blank"
+            href="https://codepen.io/domarpdev">
+            <span class="mdi mdi-codepen text-2xl"></span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useDisplay } from 'vuetify'
-
-const { mdAndUp } = useDisplay()
-const route = useRoute()
 const appBarColor = useState('appBarColor', () => '#FFF')
 const appTitleColor = useState('appTitleColor', () => '#000')
+const route = useRoute()
+
+const mdAndUp = ref(true)
 
 const isBlogActive = computed(() => route.path.startsWith('/blog'))
+
+onMounted(() => {
+  const checkBreakpoint = () => {
+    mdAndUp.value = window.innerWidth >= 768
+  }
+  checkBreakpoint()
+  window.addEventListener('resize', checkBreakpoint)
+})
 </script>
 
 <style>
@@ -96,36 +111,19 @@ html {
   overflow-y: auto;
 }
 
-.app-bar {
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05) !important;
-}
-
-.hero {
-  font-size: 24px;
-  font-weight: 300;
-  text-decoration: none;
-  outline: none;
-  color: inherit;
-}
-
 .nav-button {
-  font-weight: 300 !important;
-  font-size: 16px !important;
-  text-transform: none !important;
-  padding: 0px 5px !important;
-  letter-spacing: 0px;
+  transition: all 0.2s;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .nav-active {
-  font-weight: 500 !important;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
-footer {
-  background: #F5F5F5 !important;
-}
-
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
   height: 10px;

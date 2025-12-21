@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
-  modules: ['@nuxt/content', '@nuxt/image', 'vuetify-nuxt-module'],
+  modules: ['@nuxt/content', '@nuxt/image', '@nuxtjs/tailwindcss'],
 
   app: {
     head: {
@@ -27,27 +27,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
       ]
-    }
-  },
-
-  vuetify: {
-    vuetifyOptions: {
-      theme: {
-        defaultTheme: 'light',
-        themes: {
-          light: {
-            colors: {
-              primary: '#4C8BF4',
-              secondary: '#424242',
-              accent: '#82B1FF',
-              error: '#FF5252',
-              info: '#2196F3',
-              success: '#4CAF50',
-              warning: '#FFC107'
-            }
-          }
-        }
-      }
     }
   },
 

@@ -1,21 +1,22 @@
 <template>
   <div>
-    <v-container>
-      <h1 class="blog-header">Blog Posts</h1>
+    <div class="container mx-auto px-4">
+      <h1 class="text-center mt-4 mb-8 text-3xl font-normal">Blog Posts</h1>
 
-      <div class="d-flex flex-wrap justify-center">
-        <v-card class="ma-5" elevation="3" v-for="post of posts" :key="post.path" width="500">
-          <NuxtLink class="post-card" :to="post.path">
-            <v-img :src="post.img" contain></v-img>
-            <v-card-title>{{ post.title }}</v-card-title>
-            <v-card-subtitle class="py-3 text-subtitle-1">
+      <div class="flex flex-wrap justify-center gap-5">
+        <div v-for="post of posts" :key="post.path"
+          class="w-full max-w-[500px] bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <NuxtLink class="block no-underline" :to="post.path">
+            <NuxtImg :src="post.img" class="w-full" />
+            <h3 class="text-xl font-medium p-4 text-black">{{ post.title }}</h3>
+            <p class="text-gray-700 px-4 pb-2">
               {{ post.description }}
-            </v-card-subtitle>
-            <div class="read-more ml-4 mb-3">Read More ...</div>
+            </p>
+            <div class="text-primary ml-4 mb-3">Read More ...</div>
           </NuxtLink>
-        </v-card>
+        </div>
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 
@@ -60,32 +61,3 @@ onMounted(() => {
   appTitleColor.value = '#000'
 })
 </script>
-
-<style>
-.blog-header {
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 30px;
-  font-weight: 400;
-}
-
-.post-card {
-  text-decoration: none;
-}
-
-.read-more {
-  color: #0166ca;
-}
-
-.v-card-title {
-  color: #000 !important;
-}
-
-.v-card-subtitle {
-  color: #000 !important;
-  white-space: normal !important;
-  overflow: visible !important;
-  text-overflow: unset !important;
-  -webkit-line-clamp: unset !important;
-}
-</style>

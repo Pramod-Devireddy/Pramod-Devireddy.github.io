@@ -1,64 +1,64 @@
 <template>
   <div>
-    <div class="profile elevation-5" align="center">
-      <v-avatar class="elevation-20" size="150">
+    <!-- Profile Section -->
+    <div class="bg-primary text-white text-lg font-light p-4 text-center shadow-lg">
+      <div class="rounded-full overflow-hidden w-[150px] h-[150px] mx-auto shadow-2xl">
         <NuxtImg src="/pramod-devireddy1-200x200.jpg" alt="Pramod Devireddy" width="150" height="150" />
-      </v-avatar>
-      <div style="font-weight: 400; letter-spacing: 5px; margin: 5px 0">
+      </div>
+      <div class="font-normal tracking-[5px] my-2">
         PRAMOD DEVIREDDY
       </div>
-      <div style="font-size: 16px; color: rgb(245, 245, 245)">
+      <div class="text-base text-gray-100">
         Scientist/Engineer - SE,
         <b>ISRO</b>🚀
       </div>
-      <div style="font-size: 16px">
+      <div class="text-base">
         Spacecraft Mission & Checkout Software Developer
       </div>
-      <div style="font-size: 16px; color: rgb(245, 245, 245)">
+      <div class="text-base text-gray-100">
         (2016 - present)
       </div>
-      <v-btn class="ma-2" href="/Pramod-Devireddy-CV.pdf" color="success">
+      <a href="/Pramod-Devireddy-CV.pdf"
+        class="inline-flex items-center tracking-wider gap-2 mt-4 px-4 py-2 bg-success text-white rounded shadow-md hover:bg-green-600 transition-colors">
         DOWNLOAD CV
-        <v-icon right>mdi-download</v-icon>
-      </v-btn>
+        <span class="mdi mdi-download"></span>
+      </a>
     </div>
 
-    <div align="center" style="margin: 30px 15%">
-      <div style="letter-spacing: 2px; font-weight: 500; margin: 10px 0">
+    <!-- Skills Section -->
+    <div class="text-center my-8 mx-[15%]">
+      <div class="tracking-[2px] font-medium my-2">
         SKILLS
       </div>
-      <v-chip class="ma-2">C</v-chip>
-      <v-chip class="ma-2">C++</v-chip>
-      <v-chip class="ma-2">Go</v-chip>
-      <v-chip class="ma-2">Qt</v-chip>
-      <v-chip class="ma-2">Matlab</v-chip>
-      <v-chip class="ma-2">Python</v-chip>
-      <v-chip class="ma-2">MySQL</v-chip>
-      <v-chip class="ma-2">HTML</v-chip>
-      <v-chip class="ma-2">CSS</v-chip>
-      <v-chip class="ma-2">JavaScript</v-chip>
-      <v-chip class="ma-2">PHP</v-chip>
-      <v-chip class="ma-2">Vue JS</v-chip>
-      <v-chip class="ma-2">Nuxt JS</v-chip>
-      <v-chip class="ma-2">Photoshop</v-chip>
-      <v-chip class="ma-2">Premiere Pro</v-chip>
-      <v-chip class="ma-2">After Effects</v-chip>
-      <v-chip class="ma-2">XD</v-chip>
-      <v-chip class="ma-2">Illustrator</v-chip>
-      <v-chip class="ma-2">Blender</v-chip>
+      <div class="flex flex-wrap justify-center">
+        <span class="skill-chip">C</span>
+        <span class="skill-chip">C++</span>
+        <span class="skill-chip">Go</span>
+        <span class="skill-chip">Qt</span>
+        <span class="skill-chip">Matlab</span>
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">MySQL</span>
+        <span class="skill-chip">HTML</span>
+        <span class="skill-chip">CSS</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">PHP</span>
+        <span class="skill-chip">Vue JS</span>
+        <span class="skill-chip">Nuxt JS</span>
+        <span class="skill-chip">Photoshop</span>
+        <span class="skill-chip">Premiere Pro</span>
+        <span class="skill-chip">After Effects</span>
+        <span class="skill-chip">XD</span>
+        <span class="skill-chip">Illustrator</span>
+        <span class="skill-chip">Blender</span>
+      </div>
     </div>
 
-    <v-divider></v-divider>
+    <hr class="border-gray-200" />
   </div>
 </template>
 
 <style scoped>
-.profile {
-  background-color: #4c8bf4 !important;
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: 300;
-  padding: 15px 10px;
-  letter-spacing: 1px;
+.skill-chip {
+  @apply px-3 py-1 m-2 rounded-full bg-gray-200 text-gray-700 text-sm;
 }
 </style>

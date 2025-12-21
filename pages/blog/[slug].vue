@@ -1,50 +1,51 @@
 <template>
-  <v-container class="mb-15">
-    <v-row justify="center">
-      <v-col xl="5" lg="7" md="10" sm="10">
-        <div class="mb-5">
-          <NuxtLink to="/blog" class="blog-list-link">
-            <v-icon>mdi-arrow-left</v-icon> &nbsp; Blog List
+  <div class="container mx-auto mb-16">
+    <div class="flex justify-center">
+      <div class="w-full xl:w-6/12 lg:w-8/12 md:w-10/12 sm:w-10/12">
+        <div class="my-5">
+          <NuxtLink to="/blog" class="inline-flex items-center text-black no-underline hover:text-primary">
+            <span class="mdi mdi-arrow-left mr-2"></span> Blog List
           </NuxtLink>
         </div>
 
-        <h1 class="blog-title">{{ post?.title }}</h1>
-        <h4 class="blog-description">{{ post?.description }}</h4>
-        <div class="d-flex flex-wrap blog-details">
-          <v-avatar class="elevation-10" size="55">
+        <h1 class="text-3xl sm:text-4xl font-normal">{{ post?.title }}</h1>
+        <h4 class="my-4 font-normal italic text-gray-600">{{ post?.description }}</h4>
+
+        <div class="flex flex-wrap items-center mt-8 mb-10">
+          <div class="rounded-full overflow-hidden w-[55px] h-[55px] shadow-lg">
             <NuxtImg src="/pramod-devireddy-96x96.jpg" alt="Pramod Devireddy" width="55" height="55" />
-          </v-avatar>
+          </div>
           <div class="ml-3 mt-1">
-            <div class="blog-author">{{ post?.author?.name }}</div>
-            <div class="blog-time">
+            <div class="font-medium">{{ post?.author?.name }}</div>
+            <div class="text-sm font-light text-gray-600">
               <span>{{ formatDate(post?.publishedAt) }}</span> •
               <ReadTime :content="post" />
             </div>
           </div>
-          <v-spacer></v-spacer>
-          <div class="ml-16 mt-3">
-            <v-btn icon color="#757575" variant="text" @click="tweet()">
-              <v-icon>mdi-twitter</v-icon>
-            </v-btn>
-            <v-btn class="mx-n1" icon color="#757575" variant="text" @click="linkedInPost()">
-              <v-icon>mdi-linkedin</v-icon>
-            </v-btn>
-            <v-btn icon color="#757575" variant="text" @click="facebookPost()">
-              <v-icon>mdi-facebook</v-icon>
-            </v-btn>
+          <div class="flex-1"></div>
+          <div class="ml-16 mt-3 flex gap-1">
+            <button class="p-2 text-gray-500 hover:text-primary transition-colors" @click="tweet()">
+              <span class="mdi mdi-twitter text-xl"></span>
+            </button>
+            <button class="p-2 text-gray-500 hover:text-primary transition-colors" @click="linkedInPost()">
+              <span class="mdi mdi-linkedin text-xl"></span>
+            </button>
+            <button class="p-2 text-gray-500 hover:text-primary transition-colors" @click="facebookPost()">
+              <span class="mdi mdi-facebook text-xl"></span>
+            </button>
           </div>
         </div>
 
-        <v-card class="mb-10" elevation="3">
-          <v-img :src="post?.img"></v-img>
-        </v-card>
+        <div class="rounded-lg shadow-md overflow-hidden mb-10">
+          <NuxtImg :src="post?.img" class="w-full" />
+        </div>
 
         <ContentRenderer class="blog-content" v-if="post" :value="post" />
 
         <PrevNextBlog :prev="prev" :next="next" />
-      </v-col>
-    </v-row>
-  </v-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -185,45 +186,9 @@ onMounted(() => {
 </script>
 
 <style>
-.blog-list-link {
-  text-decoration: none;
-  color: #000;
-}
-
-.blog-list-link:hover {
-  color: rgb(92, 148, 252);
-}
-
-.blog-title {
-  font-size: 48px;
-  font-weight: 400;
-}
-
-@media only screen and (max-width: 600px) {
-  .blog-title {
-    font-size: 36px;
-  }
-}
-
-.blog-description {
-  font-weight: 400;
-  font-style: italic;
-}
-
-.blog-details {
-  margin-top: 30px;
-  margin-bottom: 40px;
-}
-
-.blog-time {
-  font-size: 15px;
-  font-weight: 300;
-}
-
 .blog-content {
   margin-top: 40px;
   line-height: 32px;
-
 
   p {
     line-height: 32px;
@@ -268,10 +233,16 @@ onMounted(() => {
     margin-bottom: 0.5em;
   }
 
-  ul,
+  ul {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+    list-style-type: disc;
+  }
+
   ol {
     padding-left: 1.5em;
     margin-bottom: 1em;
+    list-style-type: decimal;
   }
 
   blockquote {

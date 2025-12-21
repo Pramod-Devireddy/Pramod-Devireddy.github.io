@@ -52,7 +52,7 @@ $ yarn add @nuxt/content
 
 Add `@nuxt/content` to the `modules` section of `nuxt.config.js`:
 
-```js
+```json
   modules: [
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
