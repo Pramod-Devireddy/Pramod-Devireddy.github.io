@@ -1,11 +1,10 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <!-- App Bar -->
-    <header class="fixed top-0 left-0 right-0 z-50 shadow-sm" :style="{ backgroundColor: appBarColor }"
-      :class="mdAndUp ? 'h-[75px]' : 'h-[100px]'">
-      <div class="flex items-center h-full px-4" :class="mdAndUp ? 'flex-row' : 'flex-col justify-center'">
+    <header class="fixed top-0 left-0 right-0 z-50 shadow-sm h-[100px] md:h-[75px]" :style="{ backgroundColor: appBarColor }">
+      <div class="flex items-center h-full px-4 flex-col justify-center md:flex-row">
         <!-- Logo -->
-        <div :class="mdAndUp ? 'ml-10' : 'text-center mt-2'">
+        <div class="text-center mt-2 md:mt-0 md:text-left md:ml-10">
           <h1>
             <NuxtLink to="/" class="text-2xl font-light no-underline" :style="{ color: appTitleColor }">
               Pramod Devireddy
@@ -16,7 +15,7 @@
         <div class="flex-1"></div>
 
         <!-- Navigation -->
-        <nav :class="mdAndUp ? 'pr-10' : 'text-center mb-2'">
+        <nav class="text-center mb-2 md:mb-0 md:pr-10">
           <NuxtLink class="nav-button px-5 py-2 mx-1 text-base font-light rounded-full transition-all cursor-pointer"
             :style="{ color: appTitleColor }">
             Skills
@@ -42,7 +41,7 @@
     </header>
 
     <!-- Main Content -->
-    <main :class="mdAndUp ? 'mt-[75px]' : 'mt-[100px]'" class="flex-1">
+    <main class="flex-1 mt-[100px] md:mt-[75px]">
       <NuxtPage />
     </main>
 
@@ -57,7 +56,7 @@
           </span>
         </div>
 
-        <div class="w-full md:w-1/3" :class="mdAndUp ? 'text-right pr-4' : 'text-center'">
+        <div class="w-full md:w-1/3 text-center md:text-right md:pr-4">
           <a class="inline-flex items-center justify-center w-10 h-10 mx-1 text-[#DA5B50] hover:opacity-75"
             target="_blank" href="mailto:devireddy.pramod@gmail.com">
             <span class="mdi mdi-gmail text-2xl"></span>
@@ -93,17 +92,7 @@ const appBarColor = useState('appBarColor', () => '#FFF')
 const appTitleColor = useState('appTitleColor', () => '#000')
 const route = useRoute()
 
-const mdAndUp = ref(true)
-
 const isBlogActive = computed(() => route.path.startsWith('/blog'))
-
-onMounted(() => {
-  const checkBreakpoint = () => {
-    mdAndUp.value = window.innerWidth >= 768
-  }
-  checkBreakpoint()
-  window.addEventListener('resize', checkBreakpoint)
-})
 </script>
 
 <style>

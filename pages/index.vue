@@ -5,8 +5,12 @@
 </template>
 
 <script setup lang="ts">
-const appBarColor = useState('appBarColor', () => '#FFF')
-const appTitleColor = useState('appTitleColor', () => '#000')
+const appBarColor = useState('appBarColor', () => '#4C8BF4')
+const appTitleColor = useState('appTitleColor', () => '#FFF')
+
+// Set colors immediately for SSR consistency
+appBarColor.value = '#4C8BF4'
+appTitleColor.value = '#FFF'
 
 useHead({
   title: 'Pramod Devireddy',
@@ -32,10 +36,5 @@ useHead({
       content: 'Scientist/Engineer @ ISRO || Spacecraft Mission & Checkout Software Engineer || Full Stack Developer'
     }
   ]
-})
-
-onMounted(() => {
-  appBarColor.value = '#4C8BF4'
-  appTitleColor.value = '#FFF'
 })
 </script>

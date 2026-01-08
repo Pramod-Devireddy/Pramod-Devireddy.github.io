@@ -53,6 +53,10 @@ const appBarColor = useState('appBarColor', () => '#FFF')
 const appTitleColor = useState('appTitleColor', () => '#000')
 const route = useRoute()
 
+// Set colors immediately for SSR consistency
+appBarColor.value = '#FFF'
+appTitleColor.value = '#000'
+
 const { data: post } = await useAsyncData(`post-${route.params.slug}`, () =>
   queryCollection('blog')
     .where('stem', '=', `blog/${route.params.slug}`)
@@ -177,11 +181,6 @@ useHead({
       content: `https://Pramod-Devireddy.github.io${post.value?.img}`
     }
   ]
-})
-
-onMounted(() => {
-  appBarColor.value = '#FFF'
-  appTitleColor.value = '#000'
 })
 </script>
 
