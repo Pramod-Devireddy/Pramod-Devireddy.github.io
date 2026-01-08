@@ -18,7 +18,7 @@
       <div class="text-base text-gray-100">
         (2016 - present)
       </div>
-      <a href="/Pramod-Devireddy-CV.pdf"
+      <a href="/Pramod-Devireddy-CV.pdf" download="Pramod-Devireddy-CV.pdf" target="_blank"
         class="inline-flex items-center tracking-wider gap-2 mt-4 px-4 py-2 bg-success text-white rounded shadow-md hover:bg-green-600 transition-colors">
         DOWNLOAD CV
         <span class="mdi mdi-download"></span>
