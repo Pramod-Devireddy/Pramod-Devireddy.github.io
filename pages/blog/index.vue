@@ -21,13 +21,6 @@
 </template>
 
 <script setup lang="ts">
-const appBarColor = useState('appBarColor', () => '#FFF')
-const appTitleColor = useState('appTitleColor', () => '#000')
-
-// Set colors immediately for SSR consistency
-appBarColor.value = '#FFF'
-appTitleColor.value = '#000'
-
 const { data: posts } = await useAsyncData('posts', () =>
   queryCollection('blog')
     .order('stem', 'ASC')

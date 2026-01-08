@@ -88,9 +88,12 @@
 </template>
 
 <script setup lang="ts">
-const appBarColor = useState('appBarColor', () => '#FFF')
-const appTitleColor = useState('appTitleColor', () => '#000')
 const route = useRoute()
+
+// Compute colors based on route - home page has blue header, other pages have white
+const isHomePage = computed(() => route.path === '/')
+const appBarColor = computed(() => isHomePage.value ? '#4C8BF4' : '#FFF')
+const appTitleColor = computed(() => isHomePage.value ? '#FFF' : '#000')
 
 const isBlogActive = computed(() => route.path.startsWith('/blog'))
 </script>

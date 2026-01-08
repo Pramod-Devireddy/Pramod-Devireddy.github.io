@@ -5,13 +5,6 @@
 </template>
 
 <script setup lang="ts">
-const appBarColor = useState('appBarColor', () => '#4C8BF4')
-const appTitleColor = useState('appTitleColor', () => '#FFF')
-
-// Set colors immediately for SSR consistency
-appBarColor.value = '#4C8BF4'
-appTitleColor.value = '#FFF'
-
 useHead({
   title: 'Pramod Devireddy',
   meta: [
